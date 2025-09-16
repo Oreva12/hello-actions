@@ -10,7 +10,7 @@ jobs:
       - name: Generate Backup
         run: echo "Backup created at $(date)" > backup.txt
       
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: nightly-backup
           path: backup.txt

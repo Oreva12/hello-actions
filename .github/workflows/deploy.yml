@@ -4,12 +4,18 @@ on:
     branches: [main]
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Tests
+        run: echo "Running tests..."
+
   deploy:
     needs: [test]   # Ensures CI passes first
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: "Echo Deploy"
         run: echo "Deploying app with SECRET=${{ secrets.DEPLOY_KEY }}"
