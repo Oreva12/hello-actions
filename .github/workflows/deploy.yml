@@ -1,0 +1,15 @@
+name: Deploy
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    needs: [test]   # Ensures CI passes first
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: "Echo Deploy"
+        run: echo "Deploying app with SECRET=${{ secrets.DEPLOY_KEY }}"
